@@ -1,0 +1,1 @@
+let db = new sqlite3.Database('./BitcoinPrice.db');
