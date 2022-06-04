@@ -6,7 +6,7 @@ const router = express.Router();
 
 const app = express(); 
 
-const PORT = process.env.PORT || 8000; 
+const PORT = process.env.PORT; 
 
 const Controller = require("./controller");
 
