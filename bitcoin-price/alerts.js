@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const config = require("./config");
+require("dotenv").config();
 
 exports.Alert = (price, lower) => {
     try {
@@ -7,13 +8,13 @@ exports.Alert = (price, lower) => {
         
         const port = 2525;
 
-        const senderAddress = `${config.Name} <${config.Email}>`;
+        const senderAddress = process.env.SENDER_EMAIL;
 
-        var toAddress = "shivam.25061@gmail.com";
+        var toAddress = process.env.RECEIVER_EMAIL;
 
-        const smtpUsername = config.SENDGRID_USERNAME;
+        const smtpUsername = process.env.USERNAME_SMTP;
 
-        const smtpPassword = config.SENDGRID_PASSWORD;
+        const smtpPassword = process.env.PASSWORD;
 
         var subject = "Bitcoin Update";
         if (lower){

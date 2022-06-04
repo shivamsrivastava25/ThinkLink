@@ -4,6 +4,7 @@ const database = require("./database");
 const alerts = require("./alerts");
 const config = require("./config");
 const CronJob = require("cron").CronJob;
+require("dotenv").config();
 
 
 var monitor = new CronJob("*/30 * * * * *", 
@@ -11,10 +12,10 @@ var monitor = new CronJob("*/30 * * * * *",
     try {
         let price = await currentPrice();
         database.InsertRecord(price.data);
-        if (price.data < config.LowerLimit){
+        if (price.data < process.env.LOWER_LIMIT){
             alerts.Alert(price.data, true);
         }
-        else if (price.data > config.UpperLimit){
+        else if (price.data > process.env.UPPER_LIMIT){
             alerts.Alert(price.data, false);
         }
     } 
