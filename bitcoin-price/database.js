@@ -12,8 +12,6 @@ exports.InsertRecord=(value)=>{
             }
             console.log(`A row has been inserted with value  ${value}`);
           });
-        
-          db.close();
     }
     catch (error) {
         return res.status(500).json(errorObject);

@@ -10,12 +10,14 @@ const Controller = require("./controller");
 
 app.use(express.json());
 
-app.get("/getBitcoinPrice", Controller.CurrentPrice);
 
-app.get("/", (req, res) => {        
-    return res.json({ status: "Application is running" });
-  }
-);
+app.get("/", Controller.CurrentPrice);
+// app.get("/getBitcoinPrice", Controller.CurrentPrice);
+
+// app.get("/", (req, res) => {        
+//     return res.json({ status: "Application is running" });
+//   }
+// );
 
 app.listen(PORT,() => 
     console.log("Server started listening")
